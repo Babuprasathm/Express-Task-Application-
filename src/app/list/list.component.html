@@ -1,0 +1,133 @@
+<div class="add">
+  <button
+    (click)="showaddTodo()"
+    class="button-at-right"
+    routerLinkActive="active"
+  >
+    <mat-icon>add</mat-icon>
+    Add Todo
+  </button>
+  <br />
+  <!-- <div class="slide-text">Add a todo list</div> -->
+  <br /><br /><br />
+</div>
+<div class="search">
+  <div class="card-body">
+    <!-- <mat-form-field class="search-form"> -->
+    
+    <!-- </mat-form-field> -->
+  
+   
+  </div>
+</div>
+
+<div class="listbox">
+  <div class="container">
+    <div class="display">
+      <input
+      matInput
+      id="todo"
+      placeholder="Search Todo"
+      type="text"
+      [(ngModel)]="todoSearchText"
+      (input)="Search('todo')"
+      required
+      class="mat-input-element"
+    />
+      <div class="panel-heading">
+        <h4>To do - {{ todo.length }}</h4>
+      </div>
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[InprogressList]"
+        [cdkDropListConnectedTo]="[InprogressList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          class="example-boxTodo"
+          *ngFor="let item of todo; let Index = index"
+          cdkDrag
+        >
+          {{ item.title }}
+          {{ item.completed_percentage }}
+          <div class="icon">
+            <button mat-button color="warn" (click)="Delete(Index)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-button color="" (click)="showaddTodo()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="display">
+      <input
+      placeholder="Search In Progress"
+      id="progress"
+      type="text"
+      [(ngModel)]="progressSearchText"
+      (input)="Search('inprogress')"
+      required
+      class="mat-input-element"
+    />
+      <div class="panel-heading">
+        <h4>In Progress - {{ inprogress.length }}</h4>
+      </div>
+      <div
+        cdkDropList
+        #InprogressList="cdkDropList"
+        [cdkDropListData]="inprogress"
+        [cdkDropListConnectedTo]="[CompletedList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          class="example-boxprogress"
+          *ngFor="let item of inprogress; let Index = index"
+          cdkDrag
+        >
+          {{ item.title }}
+
+          <div class="icon">
+            <button mat-button color="primary" (click)="showaddTodo()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="display">
+      <input
+      placeholder="Search Completed"
+      type="text"
+      [(ngModel)]="completedSearchText"
+      (input)="Search('completed')"
+      required
+      class="mat-input-element"
+    />
+      <div class="panel-heading">
+        <h4>Completed - {{ completed.length }}</h4>
+      </div>
+      <div
+        cdkDropList
+        #CompletedList="cdkDropList"
+        [cdkDropListData]="completed"
+        [cdkDropListConnectedTo]="[CompletedList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          class="example-boxcompleted"
+          *ngFor="let item of completed; let Index = index"
+          cdkDrag
+        >
+          {{ item.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

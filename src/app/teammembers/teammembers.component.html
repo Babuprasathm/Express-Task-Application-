@@ -1,0 +1,61 @@
+
+
+<!-- <app-time-display></app-time-display>> -->
+<div class="task-list">
+    <div class="task-container">
+      <div class="Add">
+        <button mat-icon-button class="add-employee-button" (click)="openAddTodoDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <h2>Add a task here </h2>
+      </div>
+    </div>
+      <div class="task-container" cdkDropList (cdkDropListDropped)="onTaskDrop($event)">
+        <div class="table-heading">
+          <div class="task-info">Task</div>
+          <div class="date-text">Date</div>
+          <div class="status-indicator">Status</div>
+          <div class="priority-flag">Priority</div>
+          <div class="progress-chart">Progress</div>
+          <div class="employee-image">Employee</div>
+          <div class="controls">
+            <!-- <button mat-icon-button class="add-employee-button">
+              <mat-icon>add</mat-icon>
+            </button> -->
+          </div>
+        </div>
+        
+        <div *ngFor="let task of todoList; let i = index" class="task-item" cdkDrag>
+     
+          <div class="task-info">
+            <h3>{{ task.title }}</h3>
+            <!-- <p>{{ task.description }}</p> -->
+          </div>
+          <p class="date-text">{{ task.date | date }}</p>
+          <div class="status-indicator" [ngClass]="getStatusIndicatorClass(task.status)">
+            <div class="status-indicator" [ngClass]="task.status">{{ task.status }}</div>
+          </div>
+          <div class="priority-flag" [ngClass]="getPriorityFlagClass(task.priority)">
+            <mat-icon *ngIf="task.priority === 'High'">flag</mat-icon>
+            <mat-icon *ngIf="task.priority === 'Medium'">flag</mat-icon>
+            <mat-icon *ngIf="task.priority === 'Low'">flag</mat-icon>
+          </div>
+          <div class="progress-chart">
+            <p>{{ task.complete_percentage }}%</p>
+          </div>
+          <div class="employee-image">
+            <!-- <img class="ImgClass" [src]="task.assignedEmployee.image" alt="{{ task.assignedEmployee.name }}" /> -->
+            {{ task.assignedEmployee.name }} 
+          </div>
+          <div class="controls">
+            <button mat-icon-button class="add-employee-button">
+              <mat-icon class="custom-icon">visibility</mat-icon>
+            </button>
+            <button mat-icon-button class="edit-task-button" (click)="openEditTodoDialog(task)">
+              <mat-icon class="custom-icon">edit</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    

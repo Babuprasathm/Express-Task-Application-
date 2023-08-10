@@ -1,0 +1,87 @@
+
+  <head>
+    <title>Slide Navbar</title>
+    <!-- <link rel="stylesheet" type="text/css" href="slide navbar style.css" /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true" />
+
+      <div class="signup">
+        <form>
+          <label for="chk" aria-hidden="true">Sign up</label>
+
+          <mat-form-field class="fieldDetails">
+            <input
+              matInput
+              type="text"
+              name="txt"
+              placeholder="Name"
+              required=""
+              [(ngModel)]="signUpData.name"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="fieldDetails">
+            <input
+              matInput
+              type="email"
+              name="email"
+              placeholder="Email"
+              required=""
+              [(ngModel)]="signUpData.email"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="fieldDetails">
+            <input
+              matInput
+              type="password"
+              name="pswd"
+              placeholder="Password"
+              required=""
+              [(ngModel)]="signUpData.password"
+            />
+          </mat-form-field>
+          <!-- <button mat-raised-button color="green">Accent</button> -->
+          <button class="custom-color-button" (click)="onSignUp()">
+            Sign up
+          </button>
+        </form>
+      </div>
+
+      <div class="login">
+        <form>
+          <label for="chk" aria-hidden="true">Login</label>
+          <mat-form-field class="fieldDetails">
+            <input
+              matInput
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              [(ngModel)]="loginData.name"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="fieldDetails">
+            <input
+              matInput
+              type="password"
+              name="pswd"
+              placeholder="Password"
+              required
+              [(ngModel)]="loginData.password"
+            />
+          </mat-form-field>
+
+          <button class="custom-color-button" (click)="onLogin()">Login</button>
+        </form>
+      </div>
+    </div>
+  </body>
+

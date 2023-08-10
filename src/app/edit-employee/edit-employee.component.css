@@ -1,0 +1,52 @@
+
+
+.dialog-title {
+    text-align: center;
+  }
+
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+
+  input[matInput],
+  textarea[matInput] {
+    width: 100%;
+ 
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  mat-datepicker-toggle {
+    margin-top: 8px;
+  }
+
+
+  mat-error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+
+
+  button[mat-button] {
+    margin-left: 8px;
+  }
+
+
+  .form-container {
+    padding: 16px;
+  }
+
+
+

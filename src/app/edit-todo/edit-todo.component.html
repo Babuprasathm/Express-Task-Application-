@@ -1,0 +1,27 @@
+<h2 mat-dialog-title class="title">{{ editMode ? 'Edit Employee' : 'Add Employee' }}</h2>
+
+<mat-dialog-content class="add-employee-dialog-content" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px">
+  <form [formGroup]="todoForm">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Employee Name" formControlName="title" required />
+      <mat-error *ngIf="todoForm.get('title')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+      <mat-error *ngIf="todoForm.get('description')?.hasError('required')">Description is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput [matDatepicker]="datePicker" placeholder="Date" formControlName="date" required />
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+      <mat-error *ngIf="todoForm.get('date')?.hasError('required')">Date is required</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="example-button-row" fxLayoutAlign="center center">
+  <button mat-raised-button color="primary" (click)="onSubmit()">{{ editMode ? 'Save' : 'Add Employee' }}</button>
+  <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

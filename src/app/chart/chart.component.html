@@ -1,0 +1,20 @@
+<div style="margin-top: 10%;">
+    <ejs-accumulationchart id="pieChart" [title]="title"  [legendSettings]="legend" [tooltip]="tooltip" >
+        <div >
+        <e-accumulation-series-collection>
+          <e-accumulation-series
+           
+          [dataSource]="chartData"
+            xName="status"
+            yName="value"
+            type="Pie"
+            innerRadius="40%"
+            [animation]="animation"
+            [dataLabel]="chartlabel"
+            radius="90%"
+           
+          ></e-accumulation-series>
+        </e-accumulation-series-collection>
+    </div>
+      </ejs-accumulationchart>
+    </div>

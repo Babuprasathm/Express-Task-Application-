@@ -1,0 +1,184 @@
+.task-list {
+    padding: 20px;
+  
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+  
+  .task-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Add{
+  
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    background-color: #faf6f898;
+    padding: 10px;
+  
+    margin-bottom: 10px;
+  }
+  
+  .table-heading {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  
+    .task-info,
+    .date-text,
+    .status-indicator,
+    .priority-flag,
+    .progress-chart,
+    .employee-image,
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      padding: 8px;
+    }
+  
+    .task-info {
+      flex: 2;
+    }
+  
+    .employee-image {
+      flex: 2;
+    
+  
+      img {
+        width: 40px;
+        height: 40px;
+       
+      }
+    }
+  }
+  .custom-icon {
+    font-size: 24px;
+    color: rgb(5, 5, 15);
+  }
+  
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: px;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-size: 14px;
+    
+  
+    .task-info,
+    .date-text,
+    .status-indicator,
+    .priority-flag,
+    .progress-chart,
+    .employee-image,
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      padding: 8px;
+    }
+  
+    .task-info {
+      flex: 2;
+    }
+  
+    .employee-image {
+      flex: 2;
+      flex-direction: column;
+      border-radius: 80px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      img {
+        width: 40px;
+        height: 0px;
+        border-radius: 80%;
+        margin-bottom: 8px;
+      }
+    }
+  }
+  
+  
+  .priority-flag {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    border-radius: 50%;
+  }
+  
+  .priority-flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .priority-high {
+      color: #dc3545;
+  }
+  
+  .priority-medium {
+      color: #ffc107;
+  
+  }
+  
+  .priority-low {
+      color: #28a745;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  
+    margin-left: auto;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  } 
+  &:hover {
+      background-color: #0056b3;
+    }
+  
+    .mat-icon {
+      font-size: 24px;
+      
+    }
+  
+    .status-indicator {
+      width: 26px;
+      height: 36px;
+      margin-right: 4px;
+      border-radius: 4px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      &.completed {
+        background-color: #28a745; 
+        color: #fff;
+      }
+  
+      &.inprogress {
+        background-color: #007bff; 
+        color: #fff;
+      }
+  
+      &.NotStarted {
+        background-color: #4907ff; 
+        color: #fff;
+      }
+    }

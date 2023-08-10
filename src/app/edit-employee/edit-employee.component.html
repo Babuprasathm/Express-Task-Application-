@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>Edit Todo</h2>
+<div mat-dialog-content>
+  <form [formGroup]="todoForm">
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Title">
+      <mat-error *ngIf="todoForm.get('title')?.hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Description"></textarea>
+      <mat-error *ngIf="todoForm.get('description')?.hasError('required')">Description is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="todoForm.get('date')?.hasError('required')">Date is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Status</mat-label>
+      <mat-select formControlName="status" placeholder="Status">
+        <mat-option value="todo">Todo</mat-option>
+        <mat-option value="inprogress">In Progress</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+      </mat-select>
+      <mat-error *ngIf="todoForm.get('status')?.hasError('required')">Status is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Priority</mat-label>
+      <mat-select formControlName="priority" placeholder="Priority">
+        <mat-option value="High">High</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Low">Low</mat-option>
+      </mat-select>
+      <mat-error *ngIf="todoForm.get('priority')?.hasError('required')">Priority is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Complete Percentage</mat-label>
+      <input matInput formControlName="complete_percentage" placeholder="Complete Percentage">
+      <mat-error *ngIf="todoForm.get('complete_percentage')?.hasError('required')">Complete Percentage is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Employee Name</mat-label>
+        <input matInput formControlName="assignedEmployee.name" placeholder="Employee Name">
+        <mat-error *ngIf="todoForm.get('assignedEmployee.name')?.hasError('required')">Employee Name is required</mat-error>
+      </mat-form-field>
+    <div mat-dialog-actions class="full-width-buttons">
+      <button mat-button  (click)="onCancel()">Cancel</button>
+      <button mat-button (click)="onSubmit()" color="primary" [disabled]="todoForm.invalid">Save</button>
+    </div>
+  </form>
+</div>
+

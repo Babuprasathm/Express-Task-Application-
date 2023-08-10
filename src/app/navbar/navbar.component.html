@@ -1,0 +1,79 @@
+<mat-toolbar class="main-header">
+  <button mat-icon-button (click)="toggleSidebar()">
+    <mat-icon>menu</mat-icon>
+    <!-- <h2 class="title">To Do application</h2> -->
+    <!-- <img class="app-logo" src="../../assets/LOGO.jpg" alt="App Logo" /> -->
+    <span class="app-name"> Todo application</span>
+  </button>
+
+  <span class="spacer"></span>
+  <div class="nav-icons">
+    <div class="time">
+    <time-display></time-display>
+  </div>
+    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" class="sidebar-icon" fontIcon="explore"></mat-icon>  -->
+    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" class="sidebar-icon" fontIcon="bell"></mat-icon> -->
+    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" class="sidebar-icon" fontIcon="saved"></mat-icon>  -->
+    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" class="sidebar-icon" fontIcon="logout" (click)="logout()"></mat-icon>   -->
+    <div class="profile">
+      <img
+        class="profile-picture"
+        src="../../assets/profilePic.webp"
+        alt="Profile Picture"
+        (click)="logout()"
+      />
+      
+      </div>
+  </div>
+
+  <!-- <button mat-button (click)="logout()">Logout</button> -->
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    id="sidenav"
+    mode="side"
+    [class.menu-open]="isSidebarOpen"
+    [class.menu-close]="!isSidebarOpen"
+    opened
+  >
+    <br />
+    <br />
+    <br />
+
+    <mat-list>
+      <mat-card>
+        <mat-card-header>
+          <div class="profile-section">
+            <div class="profile-info">
+              <img
+                class="profile-picture"
+                src="../../assets/profilePic.webp"
+                alt="Profile Picture"
+              />
+              <span class="username">Prasath</span>
+            </div>
+          </div>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-nav-list>
+        <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" class="sidebar-icon" fontIcon="home"></mat-icon> -->
+        <mat-list-item
+          *ngFor="let link of sidebarLinks"
+          routerLink="{{ link.route }}"
+        >
+        
+          <mat-icon id="icon-list"aria-hidden="false">{{ link.icon }}</mat-icon>
+          <span class="side-nav-label">{{ link.label }}</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
+    <div class="content-container">
+      <app-list></app-list>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

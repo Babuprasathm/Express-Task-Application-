@@ -1,0 +1,92 @@
+<h2 mat-dialog-title class="title">Add Task</h2>
+<div class="error-message" *ngIf="showErrorMessage">
+  Please fill in all required fields.
+</div>
+
+<mat-dialog-content
+  class="add-task-dialog-content"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="16px"
+>
+  <form [formGroup]="taskForm">
+    <mat-form-field
+      class="full-width"
+      [ngClass]="{
+        'invalid-input':
+          taskForm.get('title')?.invalid && taskForm.get('title')?.touched
+      }"
+    >
+      <input
+        matInput
+        placeholder="Task Title"
+        type="text"
+        formControlName="title"
+        required
+      />
+      <mat-error *ngIf="taskForm.get('title')?.hasError('required')"
+        >Title is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <textarea
+        matInput
+        placeholder="Task Description"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+
+   
+
+    <mat-form-field
+      class="full-width"
+      [ngClass]="{
+        'invalid-input':
+          taskForm.get('date')?.invalid && taskForm.get('date')?.touched
+      }"
+    >
+      <input
+        matInput
+        [matDatepicker]="taskDatePicker"
+        placeholder="Date"
+        formControlName="date"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="taskDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #taskDatePicker></mat-datepicker>
+      <mat-error *ngIf="taskForm.get('date')?.hasError('required')"
+        >Date is required</mat-error
+      >
+    </mat-form-field>
+    <div
+    class="priority-options"
+    fxLayout="row"
+    fxLayoutGap="16px"
+    fxLayoutAlign="center center"
+  >
+    <mat-label class="radio-label">Priority:</mat-label>
+    <mat-radio-group
+      [(ngModel)]="selectedPriority"
+      name="priority"
+      formControlName="priority"
+    >
+      <mat-radio-button value="High">High</mat-radio-button>
+      <mat-radio-button value="Medium">Medium</mat-radio-button>
+      <mat-radio-button value="Low">Low</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="example-button-row" fxLayoutAlign="center center">
+  <button mat-raised-button color="primary" (click)="addTask()">
+    Add Task
+  </button>
+  <button mat-raised-button color="warn" (click)="onCancelClick()">
+    Cancel
+  </button>
+</mat-dialog-actions>
